@@ -1,28 +1,18 @@
-# Alchemy::SiteBootstrapping
-Short description and motivation.
+# Bootstrap your Alchemy sites
 
-## Usage
-How to use my plugin.
+If you want to have different stylesheets loaded for different sites in AlchemyCMS this gem is a good fit for you.
 
-## Installation
-Add this line to your application's Gemfile:
+# How to use the gem
 
-```ruby
-gem 'alchemy-site_bootstrapping'
+To create a new site just run
+
+```
+$ rails g alchemy:site my_site
 ```
 
-And then execute:
-```bash
-$ bundle
-```
+This will create a scss file in `app/assets/stylesheets/alchemy` with the name of your site. This file imports all site related css code from a folder that was created in the same directory for this particular site.
 
-Or install it yourself as:
-```bash
-$ gem install alchemy-site_bootstrapping
-```
-
-## Contributing
-Contribution directions go here.
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
