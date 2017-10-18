@@ -1,5 +1,6 @@
 module Alchemy
   module SiteBootstrapping
+
     class Engine < Rails::Engine
 
       # Collecting stylesheets in app/assets/stylesheets
@@ -15,6 +16,11 @@ module Alchemy
         end
       end
 
+      # Make helper methods available to use correct stylesheet for each particular site
+      initializer "alchemy.sitebootstrapping.view_helpers" do
+        ActionView::Base.send :include, ViewHelpers
+      end
     end
+
   end
 end
