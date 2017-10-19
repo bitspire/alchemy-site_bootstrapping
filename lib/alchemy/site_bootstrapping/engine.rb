@@ -16,6 +16,19 @@ module Alchemy
         end
       end
 
+      # Collecting javascripts in app/assets/javascripts
+      initializer "alchemy.assign_javascripts_for_sites" do |app|
+        app.config.javascripts_for_alchemy_sites =
+          Dir.glob(File.join(Rails.root, "app/assets/javascripts/*.js"))
+      end
+
+      # Javascripts defined for Sites will be precompiled.
+      initializer 'alchemy.javascripts_for_sites_to_precompile' do |app|
+        app.config.javascripts_for_alchemy_sites.each do |file_path|
+          app.config.assets.precompile << "#{File.basename(file_path, '.js')}.js"
+        end
+      end
+
       # Make helper methods available to use correct stylesheet for each particular site
       initializer "alchemy.sitebootstrapping.view_helpers" do
         ActionView::Base.send :include, ViewHelpers
