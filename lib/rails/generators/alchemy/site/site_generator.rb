@@ -33,6 +33,13 @@ module Alchemy
         template "_variables.scss", "#{namespaced_site_dir}/_variables.scss"
       end
 
+      def create_javascripts
+        puts "Creating directories and files for site related javascripts..."
+        root_js_dir = "#{Rails.root}/app/assets/javascripts"
+        empty_directory "#{root_js_dir}/alchemy/sites/#{@parameterized_site_name}"
+        template "site.js", "#{root_js_dir}/#{@parameterized_site_name}.js"
+      end
+
     end
   end
 end
